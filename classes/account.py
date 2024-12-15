@@ -1,14 +1,15 @@
 class account:
-    totalAccounts = 0
+    TOTAL_ACCOUNTS = 0
 
     """
     "name" refers to first and last name of the person opening the account
     "number" refers to the account number, this is a unique identifier
     """
-    def __init__(self, name, initialBalance = 0):
-        account.totalAccounts += 1
+    def __init__(self, name, age, initialBalance = 0.0):
+        account.TOTAL_ACCOUNTS += 1
+        self.age = age
         self.name = name
-        self.number = account.totalAccounts
+        self.number = account.TOTAL_ACCOUNTS
         self.balance = initialBalance
 
     def __str__(self):
@@ -18,7 +19,7 @@ class account:
         return self.name
 
     def getBalance(self):
-        return self.balance
+        return f"${self.balance:,.2f}"
     
     def getAccountNumber(self):
         return self.number

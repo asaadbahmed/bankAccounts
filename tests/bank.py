@@ -1,6 +1,6 @@
 import unittest
-from bank import bank
-from account import account
+from classes.account import account
+from classes.bank import bank
 
 # otherwise the tests will run in alphabetical order, causing the test_bank_register_duplicate to run first
 unittest.TestLoader.sortTestMethodsUsing = None
@@ -22,4 +22,5 @@ class bankTests(unittest.TestCase):
         self.assertEqual(b.getNumAccounts(), 1)
         self.assertEqual(b.getAccounts(), [acc])
 
-unittest.main()
+if __name__ == "__main__":
+    unittest.main()

@@ -1,25 +1,29 @@
 class bank:
-    registered_banks = set()
-
-    def __init__(self, name, maxAccounts):
-        if name in bank.registered_banks:
+    REGISTERED_BANKS = set()
+    
+    def __init__(self, name, maxAccounts, minimumAgeRequirement = 18):
+        if name in bank.REGISTERED_BANKS:
             raise Exception(f"There is already a bank registered with the name {name}, choose a different name.")
         
-        bank.registered_banks.add(name)
+        bank.REGISTERED_BANKS.add(name)
+        self.minimumAgeRequirement = minimumAgeRequirement
         self.name = name
         self.accounts = []
         self.maxAccounts = maxAccounts
 
     def __str__(self):
-        return f"Bank Name: {self.name}\t\tAccounts: {len(self.accounts)} / {self.maxAccounts}"
+        return f"Bank Name: {self.name}\t\tAccounts: {len(self.accounts)} / {self.maxAccounts}\t\tMinimum Age Requirement: {self.minimumAgeRequirement}"
     
     def registerAccount(self, account):
         for account in self.accounts:
-            if account.number == account.number:
+            if account.number == account.number or account.age < self.minimumAgeRequirement:
                 return False
 
         self.accounts.append(account)        
         return True
+
+    def getAgeRequirement(self):
+        return self.minimumAgeRequirement
 
     def getName(self):
         return self.name
